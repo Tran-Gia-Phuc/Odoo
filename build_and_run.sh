@@ -6,6 +6,7 @@ echo "=== BẮT ĐẦU DEPLOY ODOO 17 ==="
 echo "================================================"
 
 echo "=== [1/3] Sync code từ Jenkins workspace vào /zoo17 ==="
+mkdir -p /zoo17/addons
 cp -r $WORKSPACE/addons/. /zoo17/addons/
 
 echo "=== [2/3] Restart Odoo ==="
