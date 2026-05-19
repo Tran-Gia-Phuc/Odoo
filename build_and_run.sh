@@ -6,31 +6,34 @@ set -e
 # ========================================== 
 DB_NAME="test" 
 ODOO_CONTAINER="zoo17-odoo17-1" 
-DB_CONTAINER="zoo17-db-1" 
 ADDONS_DIR="/zoo17/addons" 
  
 # Telegram 
 TELEGRAM_TOKEN="8891955831:AAFlT0DQtN4pednHINba87bKRya3PH_Pi9o" 
 TELEGRAM_CHAT_ID="5594081068" 
  
+# Biến Jenkins → dùng đúng tên biến Jenkins
+GIT_COMMIT_SHORT=$(echo $GIT_COMMIT | cut -c1-7)
+BRANCH=${GIT_BRANCH:-"unknown"}
+ 
 # ========================================== 
 # HÀM THÔNG BÁO TELEGRAM 
 # ========================================== 
 send_telegram() { 
-    local message=$1 
-    if [ "$TELEGRAM_TOKEN" != "YOUR_BOT_TOKEN" ]; then 
+    local message=$1
+    if [ -n "$message" ] && [ "$TELEGRAM_TOKEN" != "YOUR_BOT_TOKEN" ]; then 
         curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \ 
             -d chat_id="$TELEGRAM_CHAT_ID" \ 
-            -d text="$message" > /dev/null 
+            --data-urlencode "text=$message" > /dev/null 
     fi 
 } 
  
 echo "================================================" 
 echo "=== BẮT ĐẦU DEPLOY ODOO 17 ===" 
 echo "================================================" 
-send_telegram "🚀 Bắt đầu deploy Odoo... 
-Commit: $GIT_COMMIT 
-Branch: $GIT_BRANCH" 
+send_telegram "🚀 Bắt đầu deploy Odoo...
+Commit: ${GIT_COMMIT_SHORT}
+Branch: ${BRANCH}" 
  
 # ========================================== 
 # BƯỚC 1 — Kiểm tra thay đổi 
@@ -41,12 +44,12 @@ CHANGED=$(git -C $WORKSPACE diff --name-only HEAD~1 HEAD 2>/dev/null | grep "^ad
  
 if [ -z "$CHANGED" ]; then 
     echo "Không có thay đổi trong addons, bỏ qua deploy." 
-    send_telegram "ℹ️ Không có thay đổi addons 
+    send_telegram "ℹ️ Không có thay đổi addons
 Bỏ qua deploy." 
     exit 0 
 fi 
  
-send_telegram "📂 Phát hiện thay đổi: 
+send_telegram "📂 Phát hiện thay đổi:
 $CHANGED" 
  
 # ========================================== 
@@ -56,7 +59,7 @@ echo "=== [2/3] Sync addons ==="
 mkdir -p $ADDONS_DIR 
 cp -r $WORKSPACE/addons/. $ADDONS_DIR/ 
  
-send_telegram "📦 Sync addons xong 
+send_telegram "📦 Sync addons xong
 ✅ Code mới đã được copy vào server" 
  
 # ========================================== 
@@ -64,15 +67,13 @@ send_telegram "📦 Sync addons xong
 # ========================================== 
 echo "=== [3/3] Restart và update app list ===" 
 docker restart $ODOO_CONTAINER 
-send_telegram "🔄 Docker restart zoo17-odoo17-1... 
+send_telegram "🔄 Docker restart ${ODOO_CONTAINER}...
 ⏳ Đợi Odoo khởi động (20s)" 
  
-sleep 20
-
-# Update app list (base module để refresh danh sách module)
+sleep 20 
 docker exec $ODOO_CONTAINER odoo -u base -d $DB_NAME --stop-after-init 
  
-send_telegram "✅ Update app list xong 
+send_telegram "✅ Update app list xong
 🟢 Odoo đã sẵn sàng!" 
  
 echo "=== Check containers ===" 
@@ -81,8 +82,9 @@ docker ps
 echo "================================================" 
 echo "=== DEPLOY HOÀN THÀNH ===" 
 echo "================================================" 
-send_telegram "🎉 DEPLOY HOÀN THÀNH! 
-────────────────── 
-🗄️ Database: $DB_NAME 
-📌 Commit: $GIT_COMMIT 
+send_telegram "🎉 DEPLOY HOÀN THÀNH!
+──────────────────
+🗄️ Database: ${DB_NAME}
+📌 Commit: ${GIT_COMMIT_SHORT}
+🌿 Branch: ${BRANCH}
 ⏱️ Thời gian: $(date '+%H:%M:%S %d/%m/%Y')"
