@@ -34,7 +34,7 @@ Commit: $GIT_COMMIT
 Branch: $GIT_BRANCH"
 
 # ==========================================
-# BƯỚC 1 — Chỉ deploy khi addons thay đổi
+# BƯỚC 1 — Kiểm tra thay đổi
 # ==========================================
 echo "=== [1/4] Kiểm tra thay đổi ==="
 
@@ -42,47 +42,49 @@ CHANGED=$(git -C $WORKSPACE diff --name-only HEAD~1 HEAD 2>/dev/null | grep "^ad
 
 if [ -z "$CHANGED" ]; then
     echo "Không có thay đổi trong addons, bỏ qua deploy."
-    send_telegram "ℹ️ Không có thay đổi addons, bỏ qua restart."
+    send_telegram "ℹ️ Không có thay đổi addons
+Bỏ qua deploy."
     exit 0
 fi
 
-echo "Có thay đổi:"
-echo "$CHANGED"
+send_telegram "📂 Phát hiện thay đổi:
+$CHANGED"
 
 # ==========================================
 # BƯỚC 2 — Backup database
 # ==========================================
 echo "=== [2/4] Backup database '$DB_NAME' ==="
 mkdir -p $BACKUP_DIR
-
 BACKUP_FILE="$BACKUP_DIR/backup_$(date +%Y%m%d_%H%M%S).sql"
 docker exec $DB_CONTAINER pg_dump -U odoo $DB_NAME > $BACKUP_FILE
-
-echo "Backup xong: $BACKUP_FILE"
-
-# Chỉ giữ lại 5 bản backup gần nhất
 ls -t $BACKUP_DIR/*.sql | tail -n +6 | xargs -r rm
-echo "Đã xóa backup cũ, giữ lại 5 bản mới nhất."
+
+send_telegram "💾 Backup database xong
+📁 File: $BACKUP_FILE"
 
 # ==========================================
-# BƯỚC 3 — Sync code mới vào /zoo17/addons
+# BƯỚC 3 — Sync addons
 # ==========================================
 echo "=== [3/4] Sync addons ==="
 mkdir -p $ADDONS_DIR
 cp -r $WORKSPACE/addons/. $ADDONS_DIR/
-echo "Sync xong."
+
+send_telegram "📦 Sync addons xong
+✅ Code mới đã được copy vào server"
 
 # ==========================================
-# BƯỚC 4 — Restart Odoo + Update tất cả module
+# BƯỚC 4 — Restart + Update modules
 # ==========================================
 echo "=== [4/4] Restart và update modules ==="
 docker restart $ODOO_CONTAINER
+send_telegram "🔄 Docker restart zoo17-odoo17-1...
+⏳ Đợi Odoo khởi động (20s)"
 
-echo "Đợi Odoo khởi động..."
 sleep 20
-
 docker exec $ODOO_CONTAINER odoo -u all -d $DB_NAME --stop-after-init
-echo "Update modules xong."
+
+send_telegram "✅ Update modules xong
+🟢 Odoo đã sẵn sàng!"
 
 echo "=== Check containers ==="
 docker ps
@@ -90,5 +92,8 @@ docker ps
 echo "================================================"
 echo "=== DEPLOY HOÀN THÀNH ==="
 echo "================================================"
-send_telegram "✅ Deploy Odoo thành công!
-Commit: $GIT_COMMIT"
+send_telegram "🎉 DEPLOY HOÀN THÀNH!
+──────────────────
+🗄️ Database: $DB_NAME
+📌 Commit: $GIT_COMMIT
+⏱️ Thời gian: $(date '+%H:%M:%S %d/%m/%Y')"
