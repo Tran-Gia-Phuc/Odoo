@@ -1,3 +1,8 @@
+boto3
+dropbox
+pyncclient
+nextcloud-api-wrapper
+paramiko
 # -----------------------
 # | Add Python packages |
 # -----------------------
