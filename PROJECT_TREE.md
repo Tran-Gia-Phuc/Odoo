@@ -1,0 +1,275 @@
+# Project Tree Structure
+
+Generated on 5/19/2026
+
+```
+└── 📁 zoo17
+    ├── 📁 addons
+    │   ├── 📁 auto_database_backup
+    │   │   ├── 📁 controllers
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   └── 📄 auto_database_backup.py
+    │   │   ├── 📁 data
+    │   │   │   ├── 📄 ir_cron_data.xml
+    │   │   │   └── 📄 mail_template_data.xml
+    │   │   ├── 📁 doc
+    │   │   │   └── 📝 RELEASE_NOTES.md
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   └── 📄 db_backup_configure.py
+    │   │   ├── 📁 security
+    │   │   │   └── 📄 ir.model.access.csv
+    │   │   ├── 📁 static
+    │   │   │   └── 📁 description
+    │   │   │       ├── 📁 assets
+    │   │   │       │   ├── 📁 icons
+    │   │   │       │   │   ├── 🖼️ check.png
+    │   │   │       │   │   ├── 🖼️ chevron.png
+    │   │   │       │   │   ├── 🖼️ cogs.png
+    │   │   │       │   │   ├── 🖼️ consultation.png
+    │   │   │       │   │   ├── 🖼️ down.svg
+    │   │   │       │   │   ├── 🖼️ ecom-black.png
+    │   │   │       │   │   ├── 🖼️ education-black.png
+    │   │   │       │   │   ├── 🖼️ faq.png
+    │   │   │       │   │   ├── 🖼️ feature.png
+    │   │   │       │   │   ├── 🖼️ hotel-black.png
+    │   │   │       │   │   ├── 🖼️ license.png
+    │   │   │       │   │   ├── 🖼️ lifebuoy.png
+    │   │   │       │   │   ├── 🖼️ manufacturing-black.png
+    │   │   │       │   │   ├── 🖼️ notes.png
+    │   │   │       │   │   ├── 🖼️ pos-black.png
+    │   │   │       │   │   ├── 🖼️ puzzle.png
+    │   │   │       │   │   ├── 🖼️ restaurant-black.png
+    │   │   │       │   │   ├── 🖼️ screenshot.png
+    │   │   │       │   │   ├── 🖼️ service-black.png
+    │   │   │       │   │   ├── 🖼️ skype.png
+    │   │   │       │   │   ├── 🖼️ star-1.svg
+    │   │   │       │   │   ├── 🖼️ star-2.svg
+    │   │   │       │   │   ├── 🖼️ support.png
+    │   │   │       │   │   ├── 🖼️ test-1 - Copy.png
+    │   │   │       │   │   ├── 🖼️ test-1.png
+    │   │   │       │   │   ├── 🖼️ test-2.png
+    │   │   │       │   │   ├── 🖼️ trading-black.png
+    │   │   │       │   │   ├── 🖼️ training.png
+    │   │   │       │   │   ├── 🖼️ update.png
+    │   │   │       │   │   ├── 🖼️ user.png
+    │   │   │       │   │   ├── 🖼️ video.png
+    │   │   │       │   │   ├── 🖼️ whatsapp.png
+    │   │   │       │   │   └── 🖼️ wrench.png
+    │   │   │       │   ├── 📁 modules
+    │   │   │       │   │   ├── 🖼️ 1.gif
+    │   │   │       │   │   ├── 🖼️ 2.jpg
+    │   │   │       │   │   ├── 🖼️ 3.png
+    │   │   │       │   │   ├── 🖼️ 4.png
+    │   │   │       │   │   ├── 🖼️ 5.png
+    │   │   │       │   │   └── 🖼️ 6.jpg
+    │   │   │       │   ├── 📁 screenshots
+    │   │   │       │   │   ├── 🖼️ 1.png
+    │   │   │       │   │   ├── 🖼️ 10.png
+    │   │   │       │   │   ├── 🖼️ 11.png
+    │   │   │       │   │   ├── 🖼️ 12.png
+    │   │   │       │   │   ├── 🖼️ 13.png
+    │   │   │       │   │   ├── 🖼️ 14.png
+    │   │   │       │   │   ├── 🖼️ 15.png
+    │   │   │       │   │   ├── 🖼️ 16.png
+    │   │   │       │   │   ├── 🖼️ 17.png
+    │   │   │       │   │   ├── 🖼️ 18.png
+    │   │   │       │   │   ├── 🖼️ 19.png
+    │   │   │       │   │   ├── 🖼️ 2.png
+    │   │   │       │   │   ├── 🖼️ 20.png
+    │   │   │       │   │   ├── 🖼️ 21.png
+    │   │   │       │   │   ├── 🖼️ 22.png
+    │   │   │       │   │   ├── 🖼️ 23.png
+    │   │   │       │   │   ├── 🖼️ 24.png
+    │   │   │       │   │   ├── 🖼️ 25.png
+    │   │   │       │   │   ├── 🖼️ 26.png
+    │   │   │       │   │   ├── 🖼️ 27.png
+    │   │   │       │   │   ├── 🖼️ 28.png
+    │   │   │       │   │   ├── 🖼️ 29.png
+    │   │   │       │   │   ├── 🖼️ 3.png
+    │   │   │       │   │   ├── 🖼️ 30.png
+    │   │   │       │   │   ├── 🖼️ 31.png
+    │   │   │       │   │   ├── 🖼️ 32.png
+    │   │   │       │   │   ├── 🖼️ 33.png
+    │   │   │       │   │   ├── 🖼️ 34.png
+    │   │   │       │   │   ├── 🖼️ 35.png
+    │   │   │       │   │   ├── 🖼️ 36.png
+    │   │   │       │   │   ├── 🖼️ 37.png
+    │   │   │       │   │   ├── 🖼️ 38.png
+    │   │   │       │   │   ├── 🖼️ 39.png
+    │   │   │       │   │   ├── 🖼️ 4.png
+    │   │   │       │   │   ├── 🖼️ 40.png
+    │   │   │       │   │   ├── 🖼️ 41.png
+    │   │   │       │   │   ├── 🖼️ 42.png
+    │   │   │       │   │   ├── 🖼️ 43.png
+    │   │   │       │   │   ├── 🖼️ 44.png
+    │   │   │       │   │   ├── 🖼️ 45.png
+    │   │   │       │   │   ├── 🖼️ 46.png
+    │   │   │       │   │   ├── 🖼️ 47.png
+    │   │   │       │   │   ├── 🖼️ 48.png
+    │   │   │       │   │   ├── 🖼️ 49.png
+    │   │   │       │   │   ├── 🖼️ 5.png
+    │   │   │       │   │   ├── 🖼️ 50.png
+    │   │   │       │   │   ├── 🖼️ 51.png
+    │   │   │       │   │   ├── 🖼️ 52.png
+    │   │   │       │   │   ├── 🖼️ 6.png
+    │   │   │       │   │   ├── 🖼️ 7.png
+    │   │   │       │   │   ├── 🖼️ 8.png
+    │   │   │       │   │   ├── 🖼️ 9.png
+    │   │   │       │   │   ├── 🖼️ hero.gif
+    │   │   │       │   │   ├── 🖼️ responsive.jpg
+    │   │   │       │   │   ├── 🖼️ responsive.png
+    │   │   │       │   │   └── 🖼️ xx.png
+    │   │   │       │   ├── 🖼️ cybro-icon.png
+    │   │   │       │   ├── 🖼️ cybro-odoo.png
+    │   │   │       │   ├── 🖼️ h2.png
+    │   │   │       │   └── 🖼️ y18.jpg
+    │   │   │       ├── 🖼️ banner.gif
+    │   │   │       ├── 🖼️ icon.png
+    │   │   │       └── 🌐 index.html
+    │   │   ├── 📁 views
+    │   │   │   └── 📄 db_backup_configure_views.xml
+    │   │   ├── 📁 wizard
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 dropbox_auth_code_views.xml
+    │   │   │   └── 📄 dropbox_auth_code.py
+    │   │   ├── 📄 __init__.py
+    │   │   ├── 📄 __manifest__.py
+    │   │   └── 📄 README.rst
+    │   ├── 📁 bar
+    │   │   └── 📄 __manifest__.py
+    │   ├── 📁 demo_course
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   └── 📄 course.py
+    │   │   ├── 📁 security
+    │   │   │   └── 📄 ir.model.access.csv
+    │   │   ├── 📁 views
+    │   │   │   └── 📄 course_views.xml
+    │   │   ├── 📄 __init__.py
+    │   │   └── 📄 __manifest__.py
+    │   ├── 📁 demo_student
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 student_class.py
+    │   │   │   ├── 📄 student.py
+    │   │   │   └── 📄 subject.py
+    │   │   ├── 📁 security
+    │   │   │   └── 📄 ir.model.access.csv
+    │   │   ├── 📁 views
+    │   │   │   ├── 📄 student_class_views.xml
+    │   │   │   ├── 📄 student_views.xml
+    │   │   │   └── 📄 subject_views.xml
+    │   │   ├── 📁 wizard
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 assign_student_views.xml
+    │   │   │   └── 📄 assign_student.py
+    │   │   ├── 📄 __init__.py
+    │   │   └── 📄 __manifest__.py
+    │   ├── 📁 foo
+    │   │   └── 📄 __manifest__.py
+    │   ├── 📁 pos
+    │   │   ├── 📁 controllers
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   └── 📄 pos_combo.py
+    │   │   ├── 📁 views
+    │   │   │   └── 📄 pos_combo_views.xml
+    │   │   ├── 📄 __init__.py
+    │   │   └── 📄 __manifest__.py
+    │   ├── 📁 zoo
+    │   │   ├── 📁 controllers
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 foo.py
+    │   │   │   └── 📄 main.py
+    │   │   ├── 📁 data
+    │   │   │   ├── 📄 cron_feed.xml
+    │   │   │   └── 📄 zoo_animal_data.xml
+    │   │   ├── 📁 dummy_data
+    │   │   │   ├── 📄 categ.xml
+    │   │   │   └── 📄 dummy.xml
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 __init__.sync-conflict-20241213-091815-XF4B7JT.py
+    │   │   │   ├── 📄 tempCodeRunnerFile.py
+    │   │   │   ├── 📄 zoo_animal_meal.py
+    │   │   │   ├── 📄 zoo_animal.py
+    │   │   │   ├── 📄 zoo_animal.sync-conflict-20241213-091815-XF4B7JT.py
+    │   │   │   ├── 📄 zoo_cage.py
+    │   │   │   ├── 📄 zoo_category.py
+    │   │   │   ├── 📄 zoo_creature.py
+    │   │   │   └── 📄 zoo_dummy.py
+    │   │   ├── 📁 security
+    │   │   │   ├── 📄 ir.model.access.csv
+    │   │   │   ├── 📄 ir.model.access.sync-conflict-20241213-091815-XF4B7JT.csv
+    │   │   │   └── 📄 zoo_security.xml
+    │   │   ├── 📁 static
+    │   │   │   ├── 📁 description
+    │   │   │   │   └── 🖼️ icon.png
+    │   │   │   └── 📁 src
+    │   │   │       ├── 📁 components
+    │   │   │       │   ├── 📁 counter
+    │   │   │       │   │   ├── 📜 counter.js
+    │   │   │       │   │   └── 📄 counter.xml
+    │   │   │       │   ├── 📁 myheader
+    │   │   │       │   │   ├── 🎨 myheader.css
+    │   │   │       │   │   ├── 📜 myheader.js
+    │   │   │       │   │   └── 📄 myheader.xml
+    │   │   │       │   ├── 📁 mytable
+    │   │   │       │   │   ├── 🎨 mytable.css
+    │   │   │       │   │   ├── 📜 mytable.js
+    │   │   │       │   │   └── 📄 mytable.xml
+    │   │   │       │   └── 📄 a
+    │   │   │       └── 📄 a
+    │   │   ├── 📁 views
+    │   │   │   ├── 📄 report_animal_inherit.xml
+    │   │   │   ├── 📄 report_animal.xml
+    │   │   │   ├── 📄 report_dummy.xml
+    │   │   │   ├── 📄 zoo_animal_views.sync-conflict-20241213-091815-XF4B7JT.xml
+    │   │   │   ├── 📄 zoo_animal_views.xml
+    │   │   │   ├── 📄 zoo_cage_views.xml
+    │   │   │   ├── 📄 zoo_creature_views.xml
+    │   │   │   ├── 📄 zoo_dummy_views.xml
+    │   │   │   └── 📄 zoo_report.xml
+    │   │   ├── 📁 wizard
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 cage_update_views.xml
+    │   │   │   ├── 📄 cage_update.py
+    │   │   │   ├── 📄 toy_add_views.xml
+    │   │   │   ├── 📄 toy_add.py
+    │   │   │   ├── 📄 toy_clear_views.xml
+    │   │   │   └── 📄 toy_clear.py
+    │   │   ├── 📄 __init__.py
+    │   │   ├── 📄 __manifest__.py
+    │   │   ├── 📄 __manifest__.sync-conflict-20241213-091815-XF4B7JT.py
+    │   │   ├── 📄 .env
+    │   │   ├── 📄 my_client.py
+    │   │   └── 📄 xml_rpc.py
+    │   ├── 📁 zoo_plus
+    │   │   ├── 📁 controllers
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   └── 📄 main.py
+    │   │   ├── 📁 models
+    │   │   │   ├── 📄 __init__.py
+    │   │   │   ├── 📄 sale_order.py
+    │   │   │   ├── 📄 zoo_animal_backup.py
+    │   │   │   ├── 📄 zoo_animal.py
+    │   │   │   ├── 📄 zoo_creature.py
+    │   │   │   └── 📄 zoo_souvenir.py
+    │   │   ├── 📁 security
+    │   │   │   └── 📄 ir.model.access.csv
+    │   │   ├── 📁 views
+    │   │   │   ├── 📄 sale_order_views.xml
+    │   │   │   └── 📄 zoo_animal_views.xml
+    │   │   ├── 📄 __init__.py
+    │   │   ├── 📄 __manifest__.py
+    │   │   └── 📄 my_client.py
+    │   └── 📝 readme.md
+    ├── 📄 .gitignore
+    ├── 📄 build_and_run.sh
+    ├── 📄 docker-compose.yml
+    ├── 📄 Dockerfile.jenkins
+    ├── 📄 entrypoint.sh
+    ├── 📝 README.md
+    └── 📄 run.sh
+```
