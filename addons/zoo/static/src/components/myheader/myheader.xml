@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="zoo.MyHeader">
+
+        <!-- code -->
+        <div class="my_header" t-on-click="on_click">
+            <h1>
+                <t t-esc="state.name"/>
+            </h1>
+        </div>
+
+    </t>
+</templates>

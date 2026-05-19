@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_zoo_animal_clear_toy" model="ir.ui.view">
+        <field name="name">view.zoo.animal.clear.toy</field>
+        <field name="model">zoo.toy.clear.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Clear Toy">            
+                <p>
+                    Clear all toys of the selected record(s)?
+                </p>
+                <footer>
+                    <button string="Confirm" name="clear_toy" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_zoo_animal_clear_toy" model="ir.actions.act_window">
+        <field name="name">Clear Toy</field>
+        <field name="res_model">zoo.toy.clear.wizard</field>
+        <field name="binding_model_id" ref="model_zoo_animal"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_zoo_animal_clear_toy"/>
+    </record>
+</odoo>

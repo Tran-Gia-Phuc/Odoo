@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="zoo.MyTable">
+        <b><span class="title" t-on-click="title_clicked"><t t-esc="state.title"/></span></b>
+        <table class="my_table">
+            <tr><th>Property</th><th>Value</th></tr>
+            <t t-foreach="state.data_prop" t-as="data" t-key="data.key">
+                <tr>
+                    <td><t t-esc="data.key"/></td>
+                    <td><t t-esc="data.value"/></td>
+                </tr>
+            </t>
+        </table>
+    </t>
+</templates>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="zoo_dummy_tree_view" model="ir.ui.view">
+            <field name="name">zoo.dummy.tree.view</field>
+            <field name="model">zoo.dummy</field>
+            <field name="arch" type="xml">
+                <tree string="Dummies" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="a"/>
+                    <field name="b"/>
+                    <field name="c"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    <field name="dtime"/>
+                    <field name="is_online"/>
+                    <field name="categ_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="zoo_dummy_categ_tree_view" model="ir.ui.view">
+            <field name="name">zoo.dummy.categ.tree.view</field>
+            <field name="model">zoo.dummy.categ</field>
+            <field name="arch" type="xml">
+                <tree string="Dummy Categories" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="parent_categ_id"/>
+                    <field name="parent_path"/>
+                    <field name="child_categ_ids"/>
+                    <field name="dummy_ids"/>
+                    <!-- <field name="categ_name" invisible="1"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="zoo_dummy_filter" model="ir.ui.view">
+            <field name="name">zoo.dummy.filter</field>
+            <field name="model">zoo.dummy</field>
+            <field name="arch" type="xml">
+                <search string="Search Dummies">
+                    <field name="name" string="Name" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="categ_id" string="Category" filter_domain="[('categ_id', 'child_of', self)]"/>
+                    <filter string="(A&gt;4) AND (B>=17) OR (C&lt;0)" name="abc_filter1" domain="[('a', '&gt;', 4), '|', ('b', '>=', 17), ('c', '&lt;', 0)]" help="ABC Filter #1"/>
+                    <filter string="(A&gt;4) OR (B>=17) OR (C&lt;0)" name="abc_filter2" domain="['|', '|', ('a', '&gt;', 4), ('b', '>=', 17), ('c', '&lt;', 0)]" help="ABC Filter #2"/>
+                    <separator/>
+                    <filter string="(ONLINE OR STATE IN (SECOND, THIRD)) AND A>=0 AND B>=5 AND C>=10" name="abc_filter3" domain="['|', ('is_online', '=', 1), ('state', 'in', ['second', 'third']), ('a', '>=', 0), ('b', '>=', 5), ('c', '>=', 10)]" help="ABC Filter #3"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_zoo_dummy" model="ir.actions.act_window">
+            <field name="name">Dummy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">zoo.dummy</field>
+            <field name="search_view_id" ref="zoo_dummy_filter"/>
+        </record>
+
+        <record id="action_zoo_dummy_categ" model="ir.actions.act_window">
+            <field name="name">Dummy Categ</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">zoo.dummy.categ</field>
+        </record>
+        
+        <menuitem id="menu_zoo_dummy"
+            name="Dummy"
+            sequence="20"
+            parent="zoo.menu_zoo"
+            action="action_zoo_dummy"
+            groups="base.group_user"/>        
+        
+        <menuitem id="menu_zoo_dummy_categ"
+            name="Dummy Categ"
+            sequence="30"
+            parent="zoo.menu_zoo"
+            action="action_zoo_dummy_categ"
+            groups="base.group_user"/>
+    </data>
+</odoo>

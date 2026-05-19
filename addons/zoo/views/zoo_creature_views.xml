@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="zoo_creature_form_view" model="ir.ui.view">
+            <field name="name">zoo.creature.form.view</field>
+            <field name="model">zoo.creature</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Creature" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" placeholder="e.g. Tiger" />
+                            </h1>
+                        </div>
+
+                        <group name="basic_information">
+                            <group>
+                                <field name="is_rare" />
+                                <field name="environment" />
+                            </group>
+                            <group>
+                                <field name="animal_ids" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="zoo_creature_tree_view" model="ir.ui.view">
+            <field name="name">zoo.creature.tree.view</field>
+            <field name="model">zoo.creature</field>
+            <field name="arch" type="xml">
+                <tree string="Creatures" default_order="create_date desc">
+                    <field name="name" />
+                    <field name="is_rare" />
+                    <field name="environment" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="zoo_creature_kanban_view">
+            <field name="name">zoo.creature.kanban.view</field>
+            <field name="model">zoo.creature</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name" />
+                    <field name="environment" />
+                    <field name="is_rare" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <h2>
+                                    <field name="name" />
+                                </h2>
+                                <div class="oe_kanban_details">
+                                    <div class="row">
+                                        <div class="col-6"> Environment: <field name="environment" />
+                                        </div>
+                                        <div class="col-6">
+                                            <t t-if="record.is_rare.raw_value">
+                                                <b style="color:red;">Rare</b>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="zoo_creature_filter" model="ir.ui.view">
+            <field name="name">zoo.creature.filter</field>
+            <field name="model">zoo.creature</field>
+            <field name="arch" type="xml">
+                <search string="Search zoo creature">
+                    <filter string="Rare" name="rare_filter" domain="[('is_rare', '=', True)]"
+                        help="Rare filter" />
+                    <filter string="Not Rare" name="not_rare_filter"
+                        domain="[('is_rare', '=', False)]" help="Not rare filter" />
+                    <group expand="0" string="Group By">
+                        <filter string="Environment" name="group_by_environment" domain="[]"
+                            context="{'group_by': 'environment'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_zoo_creature" model="ir.actions.act_window">
+            <field name="name">Creature</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">zoo.creature</field>
+            <field name="search_view_id" ref="zoo_creature_filter" />
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('zoo_creature_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('zoo_creature_form_view')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('zoo_creature_kanban_view')}),]" />
+        </record>
+
+        <menuitem id="menu_zoo_configuration"
+            name="Configuration"
+            sequence="50"
+            parent="menu_zoo"
+            groups="zoo.group_zoo_user,zoo.group_zoo_manager" />
+
+        <menuitem id="menu_zoo_configuration_creature"
+            name="Creature"
+            sequence="10"
+            parent="menu_zoo_configuration"
+            action="action_zoo_creature"
+            groups="zoo.group_zoo_manager" />
+            
+        <!-- <menuitem id="menu_zoo_configuration"
+            name="Configuration"
+            sequence="50"
+            parent="menu_zoo"
+            groups="base.group_user" />
+
+        <menuitem id="menu_zoo_configuration_creature"
+            name="Creature"
+            sequence="10"
+            parent="menu_zoo_configuration"
+            action="action_zoo_creature"
+            groups="base.group_user" /> -->
+
+    </data>
+</odoo>

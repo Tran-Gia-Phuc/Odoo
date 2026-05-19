@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zoo_creature,access_zoo_creature,model_zoo_creature,base.group_user,1,1,1,1
+access_zoo_cage,access_zoo_cage,model_zoo_cage,base.group_user,1,1,1,1
+access_zoo_animal_meal,access_zoo_animal_meal,model_zoo_animal_meal,base.group_user,1,1,1,1
+access_zoo_cage_update_wizard,access_zoo_cage_update_wizard,model_zoo_cage_update_wizard,base.group_user,1,1,1,1
+access_zoo_toy_add_wizard,access_zoo_toy_add_wizard,model_zoo_toy_add_wizard,base.group_user,1,1,1,1
+access_zoo_toy_clear_wizard,access_zoo_toy_clear_wizard,model_zoo_toy_clear_wizard,base.group_user,1,1,1,1
+access_zoo_dummy,access_zoo_dummy,model_zoo_dummy,base.group_user,1,1,1,1
+access_zoo_dummy_categ,access_zoo_dummy_categ,model_zoo_dummy_categ,base.group_user,1,0,0,0
+access_zoo_animal_user,access_zoo_animal_user,model_zoo_animal,zoo.group_zoo_user,1,0,0,0
+access_zoo_animal_manager,access_zoo_animal_manager,model_zoo_animal,zoo.group_zoo_manager,1,1,1,0
+access_zoo_animal_super,access_zoo_animal_super,model_zoo_animal,zoo.group_zoo_super_manager,1,1,1,1

@@ -1,0 +1,56 @@
+<odoo>
+    <!-- Form view -->
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">demo.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <button name="test_create" string="Test Create" type="object" />
+                    <button name="test_write" string="Test Write" type="object" />
+                    <!-- <button name="test_write" string="Test Write" type="object" /> -->
+                    <button name="test_unlink" string="Test Unlink" type="object" />
+
+                    <group>
+                        <field name="name" style="margin-bottom:150px;" />
+                        <field name="age" style="margin-bottom:150px;" />
+                        <field name="note" placeholder="Enter note here..." />
+                        <field name="fake" style="margin-bottom:450px;" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">student.tree</field>
+        <field name="model">demo.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="age" />
+                <field name="note" />
+                <field name="fake" />
+                <field name="class_id" />
+                <field name="subject_ids" widget="many2many_tags" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">demo.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_student_root" name="Student" />
+    <menuitem id="menu_student" name="Students" parent="menu_student_root" action="action_student" />
+    <menuitem id="menu_fake" name="Fakec Menu" parent="menu_student_root" action="action_student" />
+    <menuitem id="menu_fakennnnnnnnf" name="Fakec jjjjjjjjjjjjjjjjjMenu" parent="menu_student_root"
+        action="action_student" />
+
+
+</odoo>

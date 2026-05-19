@@ -1,0 +1,11 @@
+<templates xml:space="preserve">
+   <t t-name="zoo.counter">
+      <p>Counter: <t t-esc="state.value"/></p>
+      <button class="btn btn-primary" t-on-click="increment">Increment</button>
+   </t>
+   <t t-name="zoo.exercise">
+      <p>Exercise: <t t-esc="state.value"/></p>
+      <button class="btn btn-primary" t-on-click="increase">Increase</button>
+      <button class="btn btn-secondary" t-on-click="decrease">Decrease</button>
+   </t>
+</templates>

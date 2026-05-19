@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_dummy_document">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <div name="row">
+            <h2><span t-field="o.name"/></h2>
+            <p>A: <span t-field="o.a"/></p>
+            <p>B: <span t-field="o.b"/></p>
+            <p>C: <span t-field="o.c"/></p>
+        </div>
+        <hr/>
+    </template>
+
+    <template id="report_dummy">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.create_uid.lang"/>
+                <t t-call="zoo.report_dummy_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

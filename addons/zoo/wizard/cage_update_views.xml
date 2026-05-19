@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_zoo_animal_update_cage" model="ir.ui.view">
+        <field name="name">view.zoo.animal.update.cage</field>
+        <field name="model">zoo.cage.update.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Cage">
+                <group>
+                    <group>
+                        <field name="cage_id"/>
+                    </group>
+                    <group/>
+                </group>                
+                <p>
+                    Update cage of the selected record(s)?
+                </p>
+                <footer>
+                    <button string="Confirm" name="update_cage" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_zoo_animal_update_cage" model="ir.actions.act_window">
+        <field name="name">Update Cage</field>
+        <field name="res_model">zoo.cage.update.wizard</field>
+        <field name="binding_model_id" ref="model_zoo_animal"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_zoo_animal_update_cage"/>
+    </record>
+</odoo>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="zoo_animal_form_view" model="ir.ui.view">
+            <field name="name">zoo.animal.form.view</field>
+            <field name="model">zoo.animal</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="report_sickness" type="object"
+                            string="Report Sickness" class="oe_default"
+                            invisible="state == 'unhealthy'" />
+                        <button name="recovered_health" type="object"
+                            string="Recovered Health" class="oe_default"
+                            invisible="state != 'unhealthy'" />
+                        <field name="state" widget="statusbar" />
+                        <button name="action_update_feed_time" type="object"
+                            string="Update Feed Time" class="oe_default" />
+
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Animal" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" placeholder="e.g. Peter White Tiger" />
+                            </h1>
+                            <label for="is_alive" />
+                            <field name="is_alive" />
+                        </div>
+
+                        <group name="basic_information">
+                            <group>
+                                <field name="image" widget="image" />
+                                <field name="nickname" />
+                                <field name="creature_id" />
+                                <field name="gender" />
+                                <field name="dob" />
+                                <field name="age" />
+                                <field name="weight" />
+                                <field name="weight_pound" />
+                            </group>
+                            <group>
+                                <field name="cage_id"
+                                    options="{'no_create_edit': True, 'no_open': True}" />
+                                <field name="doctor_id" />
+                                <field name="feed_time" />
+                                <field name="mother_id" />
+                                <field name="mother_name" />
+                                <field name="father_id" />
+                                <field name="beensold" />
+                                <field name="price" />
+                            </group>
+                        </group>
+
+                        <widget name="counter" />
+                        <widget name="mytable" />  
+                        <widget name="exercise" />
+                        <widget name="myheader" />
+
+                        <notebook name="misc">
+                            <page name="additional_information" string="Additional Information">
+                                <group>
+                                    <group>
+                                        <label for="introduction" colspan="2" />
+                                        <field name="introduction" colspan="2" nolabel="1"
+                                            widget="html" />
+                                        <!-- <label for="introduction_vn" colspan="2"/> exercise -->
+                                        <!-- <field name="introduction_vn" colspan="2" nolabel="1"
+                                        widget="html"/> exercise -->
+                                    </group>
+                                    <group>
+                                        <label for="description" colspan="2" />
+                                        <field name="description" colspan="2" nolabel="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="children" string="Children">
+                                <group>
+                                    <group>
+                                        <field name="number_of_children" />
+                                    </group>
+                                    <group />
+                                </group>
+                                <group>
+                                    <group>
+                                        <label for="female_children_ids" colspan="2" />
+                                        <field name="female_children_ids" colspan="2" nolabel="1"
+                                            widget="many2many_tags" />
+                                        <!--
+                                        <field name="female_children_ids" colspan="2" nolabel="1" options="{'no_edit': True, 'no_create':
+                                        False, 'no_open': False}">
+                                            <tree string="Female Children" editable="bottom">
+                                                <field name="image" widget="image" options='{"size": [48, 48]}'/>
+                                                <field name="name"/>
+                                                <field name="dob"/>
+                                                <field name="gender"/>
+                                            </tree>
+                                        </field>
+                                        -->
+                                    </group>
+                                    <group>
+                                        <label for="male_children_ids" colspan="2" /> <!--exercise-->
+                                        <field name="male_children_ids" colspan="2" nolabel="1"
+                                            widget="many2many_tags" /> <!--exercise-->
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="others" string="Others">
+                                <group>
+                                    <group>
+                                        <field name="toy_ids" widget="many2many_tags" />
+                                    </group>
+                                    <group>
+                                        <label for="meal_ids" colspan="2" />
+                                        <field name="meal_ids" colspan="2" nolabel="1">
+                                            <tree string="Meals" editable="bottom">
+                                                <field name="product_id" />
+                                                <field name="volume" />
+                                                <field name="meal_time" />
+                                                <field name="state" /> <!--exercise-->
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="zoo_animal_tree_view" model="ir.ui.view">
+            <field name="name">zoo.animal.tree.view</field>
+            <field name="model">zoo.animal</field>
+            <field name="arch" type="xml">
+                <tree string="Animals" default_order="create_date desc">
+                    <field name="image" widget="image" options='{"size": [64, 64]}' />
+                    <field name="name" />
+                    <field name="creature_id" />
+                    <field name="dob" />
+                    <field name="gender" />
+                    <field name="weight" />
+                    <field name="mother_id" />
+                    <field name="is_alive" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="zoo_animal_kanban_view" model="ir.ui.view">
+            <field name="name">zoo.animal.kanban.view</field>
+            <field name="model">zoo.animal</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="creature_id" />
+                    <field name="dob" />
+                    <field name="gender" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="o_kanban_image_fill_left o_kanban_image_full"
+                                    t-attf-style="background-image: url(#{kanban_image('zoo.animal', 'image', record.id.raw_value)})"
+                                    role="img" />
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name" />
+                                    </strong>
+                                    (<t t-esc="record.gender.value" />) <div>
+                                        <field name="creature_id" />
+                                    </div>
+                            <div>
+                                        <field name="dob" />
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="zoo_animal_filter" model="ir.ui.view">
+            <field name="name">zoo.animal.filter</field>
+            <field name="model">zoo.animal</field>
+            <field name="arch" type="xml">
+                <search string="Search zoo animal">
+                    <field name="name" string="Animal" />
+                    <field name="creature_id" string="Creature" />
+                    <filter string="Male" name="male_filter" domain="[('gender', '=', 'male')]"
+                        help="Male filter" />
+                    <filter string="Female" name="female_filter"
+                        domain="[('gender', '=', 'female')]" help="Female filter" />
+                    <group expand="0" string="Group By">
+                        <filter string="Gender" name="group_by_gender" domain="[]"
+                            context="{'group_by': 'gender'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="zoo_animal_graph" model="ir.ui.view">
+            <field name="name">zoo.animal.graph</field>
+            <field name="model">zoo.animal</field>
+            <field name="arch" type="xml">
+                <graph string="Zoo Animals">
+                    <field name="gender"/>
+                    <field name="weight" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="action_zoo_animal" model="ir.actions.act_window">
+            <field name="name">Zoo Animal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">zoo.animal</field>
+            <field name="search_view_id" ref="zoo_animal_filter" /> <!-- <= add this line! -->
+
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('zoo_animal_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('zoo_animal_form_view')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('zoo_animal_kanban_view')}),
+                (0, 0, {'view_mode': 'graph', 'view_id': ref('zoo_animal_graph')}),]" 
+                /> 
+        </record>
+
+        <menuitem id="menu_zoo"
+            name="Zoo"
+            sequence="10"
+            groups="base.group_user" />
+
+        <menuitem id="menu_zoo_animal"
+            name="Animal"
+            action="action_zoo_animal"
+            sequence="10"
+            parent="menu_zoo"
+            groups="base.group_user" />
+
+    </data>
+</odoo>

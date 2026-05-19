@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="zoo_sale_view_order_form" model="ir.ui.view"><!--"id" do ta dat ten-->
+            <field name="name">zoo.sale.view.order.form</field><!--"name" do ta dat ten-->
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- them 3 field vao form sau field "payment_term_id" -->
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="quick_note"/>
+                    <field name="priority"/>
+                    <field name="last_support_date"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

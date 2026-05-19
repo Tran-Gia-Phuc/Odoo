@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_assign_student_wizard" model="ir.ui.view">
+        <field name="name">wizard.assign.student.form</field>
+        <field name="model">wizard.assign.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="student_ids" domain="[('class_id', '=', False)]" />
+                <footer>
+                    <button name="action_assign" string="Assign" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

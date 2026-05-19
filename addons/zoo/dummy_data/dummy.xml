@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="zoo_dummy_1" model="zoo.dummy">
+            <field name="name">Dummy 1</field>
+            <field name="a">4</field>
+            <field name="b">7</field>
+            <field name="c">15</field>
+            <field name="date">2020-11-15</field>
+            <field name="dtime">2020-11-15 15:12:34</field>
+            <field name="state">first</field>            
+            <field name="is_online">True</field>
+            <field name="categ_id" ref="zoo_dummy_categ_root"/>
+        </record>
+
+        <record id="zoo_dummy_2" model="zoo.dummy">
+            <field name="name">Dummy 2</field>
+            <field name="a">3</field>
+            <field name="b">8</field>
+            <field name="c">2.5</field>
+            <field name="date">2020-11-16</field>
+            <field name="dtime">2020-11-16 16:24:14</field>
+            <field name="state">second</field>            
+            <field name="is_online">False</field>
+            <field name="categ_id" ref="zoo_dummy_categ_1"/>
+        </record>
+
+        <record id="zoo_dummy_3" model="zoo.dummy">
+            <field name="name">Dummy 3</field>
+            <field name="a">2</field>
+            <field name="b">36</field>
+            <field name="c">0.41</field>
+            <field name="date">2020-11-25</field>
+            <field name="dtime">2020-11-25 07:03:12</field>
+            <field name="state">third</field>            
+            <field name="is_online">True</field>
+            <field name="categ_id" ref="zoo_dummy_categ_2"/>
+        </record>
+
+        <record id="zoo_dummy_4" model="zoo.dummy">
+            <field name="name">Dummy 4</field>
+            <field name="a">10</field>
+            <field name="b">23</field>
+            <field name="c">-15</field>
+            <field name="date">2020-11-01</field>
+            <field name="dtime">2020-11-01 15:12:34</field>
+            <field name="state">second</field>            
+            <field name="is_online">False</field>
+            <field name="categ_id" ref="zoo_dummy_categ_3"/>
+        </record>
+
+        <record id="zoo_dummy_5" model="zoo.dummy">
+            <field name="name">Dummy 5</field>
+            <field name="a">4.2</field>
+            <field name="b">-3.6</field>
+            <field name="c">6.92</field>
+            <field name="date">2020-11-03</field>
+            <field name="dtime">2020-11-03 12:12:34</field>
+            <field name="state">first</field>            
+            <field name="is_online">False</field>
+            <field name="categ_id" ref="zoo_dummy_categ_4"/>
+        </record>
+
+        <record id="zoo_dummy_6" model="zoo.dummy">
+            <field name="name">Dummy 6</field>
+            <field name="a">8</field>
+            <field name="b">8</field>
+            <field name="c">8</field>
+            <field name="date">2020-11-29</field>
+            <field name="dtime">2020-11-29 02:56:12</field>
+            <field name="state">third</field>            
+            <field name="is_online">True</field>
+            <field name="categ_id" ref="zoo_dummy_categ_2"/>
+        </record>
+
+        <record id="zoo_dummy_7" model="zoo.dummy">
+            <field name="name">Dummy 7</field>
+            <field name="a">12</field>
+            <field name="b">73</field>
+            <field name="c">52.15</field>
+            <field name="date">2020-11-24</field>
+            <field name="dtime">2020-11-24 14:02:04</field>
+            <field name="state">second</field>            
+            <field name="is_online">False</field>
+            <field name="categ_id" ref="zoo_dummy_categ_1"/>
+        </record>
+
+        <record id="zoo_dummy_8" model="zoo.dummy">
+            <field name="name">Dummy 8</field>
+            <field name="a">35</field>
+            <field name="b">17</field>
+            <field name="c">-65</field>
+            <field name="date">2020-11-02</field>
+            <field name="dtime">2020-11-02 04:12:34</field>
+            <field name="state">second</field>            
+            <field name="is_online">True</field>
+            <field name="categ_id" ref="zoo_dummy_categ_root"/>
+        </record>
+
+        <record id="zoo_dummy_9" model="zoo.dummy">
+            <field name="name">Dummy 9</field>
+            <field name="a">24</field>
+            <field name="b">67</field>
+            <field name="c">24</field>
+            <field name="date">2020-11-08</field>
+            <field name="dtime">2020-11-08 08:28:14</field>
+            <field name="state">first</field>            
+            <field name="is_online">True</field>
+            <field name="categ_id" ref="zoo_dummy_categ_3"/>
+        </record>
+
+        <record id="zoo_dummy_10" model="zoo.dummy">
+            <field name="name">Dummy 10</field>
+            <field name="a">14</field>
+            <field name="b">17</field>
+            <field name="c">32</field>
+            <field name="date">2020-12-02</field>
+            <field name="dtime">2020-12-02 23:22:45</field>
+            <field name="state">third</field>            
+            <field name="is_online">False</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+.my_header {
+    text-align: center;
+    border: 2px solid purple;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.my_header h1 {
+    color: purple;
+    margin: 0;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_animal_document_inherit" inherit_id="zoo.report_animal_document">
+        <xpath expr="//div[@name='row']" position="inside">
+            <p>
+                Weight: <span t-field="o.weight"/>
+            </p>
+            <p>
+                Weight (pounds): <span t-field="o.weight_pound"/>
+            </p>
+        </xpath>
+    </template>
+</odoo>

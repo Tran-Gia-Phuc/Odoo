@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zoo_animal,access_zoo_animal,model_zoo_animal,base.group_user,1,1,1,1
+access_zoo_animal_backup,access_zoo_animal_backup,model_zoo_animal_backup,base.group_user,1,1,1,1
+access_zoo_souvenir,access_zoo_souvenir,model_zoo_souvenir,base.group_user,1,1,1,1
